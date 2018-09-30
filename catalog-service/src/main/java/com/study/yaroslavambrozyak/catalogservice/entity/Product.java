@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.UUID;
 
 @Entity
@@ -11,6 +13,8 @@ import java.util.UUID;
 @Setter
 public class Product {
 
+    @Id
+    @GeneratedValue
     private UUID id;
     private String name;
     private String description;
