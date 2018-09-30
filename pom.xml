@@ -16,6 +16,8 @@
 		<module>service-registry</module>
 		<module>catalog-service</module>
 		<module>order-service</module>
+		<module>edge-service</module>
+		<module>oauth-service</module>
 	</modules>
 
 
