@@ -14,11 +14,21 @@ import java.util.UUID;
 @RequestMapping("/api/products")
 public class ProductController {
 
+    private final ProductService productService;
+
     @Autowired
-    private ProductService productService;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping("/{id}")
     public Product productByCode(@PathVariable UUID id){
         return productService.findByUUID(id);
+    }
+
+
+    @GetMapping("/ts")
+    public void test(){
+        productService.mqTest();
     }
 }

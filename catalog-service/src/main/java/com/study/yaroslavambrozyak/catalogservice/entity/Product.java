@@ -18,5 +18,6 @@ public class Product {
     private UUID id;
     private String name;
     private String description;
+    private Boolean available;
 
 }
