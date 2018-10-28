@@ -20,8 +20,12 @@ import java.security.Principal;
 @RequestMapping("/users")
 public class UserController {
 
+    private final UserAccountService userAccountService;
+
     @Autowired
-    private UserAccountService userAccountService;
+    public UserController(UserAccountService userAccountService) {
+        this.userAccountService = userAccountService;
+    }
 
     @GetMapping("/")
     public Principal user(Principal user) {
@@ -35,9 +39,20 @@ public class UserController {
     }
 
     @PutMapping("/")
-    @PreAuthorize("hasRole('CUSTOMER')")
     public ResponseEntity<?> updateUser(@RequestBody @Valid UserDTO userDTO){
+        userAccountService.updateUser(userDTO);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 
+    @DeleteMapping("/")
+    public ResponseEntity<?> deleteUser(){
+        userAccountService.deleteUser();
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PostMapping("/activate")
+    public ResponseEntity<?> activateUserAccount(@RequestParam("token") String token){
+        userAccountService.activateUserAccount(token);
         return null;
     }
 

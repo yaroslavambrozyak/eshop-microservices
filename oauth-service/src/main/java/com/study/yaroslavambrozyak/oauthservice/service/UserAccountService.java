@@ -8,4 +8,8 @@ public interface UserAccountService {
     void registerUser(UserRegistrationDTO userRegistrationDTO);
 
     void updateUser(UserDTO userDTO);
+
+    void deleteUser();
+
+    void activateUserAccount(String token);
 }

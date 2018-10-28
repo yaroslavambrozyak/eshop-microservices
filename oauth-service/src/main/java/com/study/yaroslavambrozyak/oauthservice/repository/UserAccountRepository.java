@@ -12,4 +12,6 @@ public interface UserAccountRepository extends JpaRepository<UserAccount,UUID> {
 
     boolean existsByEmail(String userEmail);
 
+    Optional<UserAccount> findByUserActivationToken_Token(String token);
+
 }
